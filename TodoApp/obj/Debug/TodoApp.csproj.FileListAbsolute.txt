@@ -8,3 +8,12 @@ C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.csproj.GenerateResourc
 C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.csproj.CoreCompileInputs.cache
 C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.exe
 C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.pdb
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.dll
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\System.Data.SQLite.dll
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.xml
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\System.Data.SQLite.xml
+C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.csproj.CopyComplete

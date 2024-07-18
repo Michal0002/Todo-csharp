@@ -15,6 +15,15 @@ namespace TodoApp
         public Form1()
         {
             InitializeComponent();
+            DatabaseManager.CreateDatabase();
+
+            DataTable dtTasks = DatabaseManager.GetAllTasks();
+            dataGridView1.DataSource = dtTasks;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
