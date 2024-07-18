@@ -41,7 +41,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT id, name, description, priority, deadline, completed FROM Tasks";
+                string query = "SELECT name, description, priority, deadline, completed FROM Tasks";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 
@@ -58,7 +58,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT id, name, description, priority, deadline, completed " +
+                string query = "SELECT name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 0";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -77,7 +77,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT id, name, description, priority, deadline, completed " +
+                string query = "SELECT name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 1";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -96,9 +96,47 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT id, name, description, priority, deadline, completed " +
+                string query = "SELECT name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 2";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dtTasks);
+
+                connection.Close();
+            }
+
+            return dtTasks;
+        }
+        public static DataTable GetCompletedTasks()
+        {
+            DataTable dtTasks = new DataTable();
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT name, description, priority, deadline, completed " +
+                               "FROM Tasks " +
+                               "WHERE completed = 1";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dtTasks);
+
+                connection.Close();
+            }
+
+            return dtTasks;
+        }
+        public static DataTable GetUncompletedTasks()
+        {
+            DataTable dtTasks = new DataTable();
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT name, description, priority, deadline, completed " +
+                               "FROM Tasks " +
+                               "WHERE completed = 0";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 

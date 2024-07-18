@@ -82,6 +82,12 @@ namespace TodoApp
                 case "tabPageHigh":
                     dataGridViewData.DataSource = DatabaseManager.GetHighPriorityTasks();
                     break;
+                case "tabPageCompleted":
+                    dataGridViewData.DataSource = DatabaseManager.GetCompletedTasks();
+                    break;
+                case "tabPageUncompleted":
+                    dataGridViewData.DataSource = DatabaseManager.GetUncompletedTasks();
+                    break;
                 default:
                     break;
             }
@@ -96,9 +102,5 @@ namespace TodoApp
             RefreshDataGridView();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -259,12 +259,11 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add new task";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(83, 126);
+            this.dateTimePicker1.Location = new System.Drawing.Point(83, 120);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(100, 26);
             this.dateTimePicker1.TabIndex = 31;
@@ -292,7 +291,7 @@
             // comboBox_priority
             // 
             this.comboBox_priority.FormattingEnabled = true;
-            this.comboBox_priority.Location = new System.Drawing.Point(83, 92);
+            this.comboBox_priority.Location = new System.Drawing.Point(83, 90);
             this.comboBox_priority.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox_priority.Name = "comboBox_priority";
             this.comboBox_priority.Size = new System.Drawing.Size(100, 26);
