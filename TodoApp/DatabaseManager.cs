@@ -50,27 +50,85 @@ namespace TodoApp
 
             return dtTasks;
         }
+        public static DataTable GetLowPriorityTasks()
+        {
+            DataTable dtTasks = new DataTable();
 
-        public static void InsertTask(string name, string description, int priority, DateTime? deadline)
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT id, name, description, priority, deadline, completed " +
+                               "FROM Tasks " +
+                               "WHERE priority = 0";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dtTasks);
+
+                connection.Close();
+            }
+
+            return dtTasks;
+        }
+        public static DataTable GetMediumPriorityTasks()
+        {
+            DataTable dtTasks = new DataTable();
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT id, name, description, priority, deadline, completed " +
+                               "FROM Tasks " +
+                               "WHERE priority = 1";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dtTasks);
+
+                connection.Close();
+            }
+
+            return dtTasks;
+        }
+        public static DataTable GetHighPriorityTasks()
+        {
+            DataTable dtTasks = new DataTable();
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT id, name, description, priority, deadline, completed " +
+                               "FROM Tasks " +
+                               "WHERE priority = 2";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dtTasks);
+
+                connection.Close();
+            }
+
+            return dtTasks;
+        }
+
+        public static void InsertTask(string name, string description, Priority priority, DateTime deadline)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
 
-                string query = @"INSERT INTO Tasks (name, description, priority, deadline) 
-                                 VALUES (@Name, @Description, @Priority, @Deadline)";
-
+                string query = "INSERT INTO Tasks (name, description, priority, deadline, completed) " +
+                               "VALUES (@name, @description, @priority, @deadline, 0)";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Description", description);
-                command.Parameters.AddWithValue("@Priority", priority);
-                command.Parameters.AddWithValue("@Deadline", deadline);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@priority", (int)priority);
+                command.Parameters.AddWithValue("@deadline", deadline);
 
                 command.ExecuteNonQuery();
 
                 connection.Close();
             }
         }
+
+
 
     }
 }
