@@ -166,7 +166,29 @@ namespace TodoApp
             }
         }
 
+        public static void UpdateTask(int taskId, string name, string description, Priority priority, DateTime deadline)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
 
+                string query = "UPDATE Tasks " +
+                               "SET name = @name, " +
+                               "description = @description, " +
+                               "priority = @priority, " +
+                               "deadline = @deadline " +
+                               "WHERE task_id = @taskId";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@priority", (int)priority);
+                command.Parameters.AddWithValue("@deadline", deadline);
+                command.Parameters.AddWithValue("@taskId", taskId);
 
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
     }
 }

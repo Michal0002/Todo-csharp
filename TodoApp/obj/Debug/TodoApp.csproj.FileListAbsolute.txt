@@ -17,3 +17,4 @@ C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.xml
 C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\EntityFramework.SqlServer.xml
 C:\Projekty\c#_projekty\TodoApp\TodoApp\bin\Debug\System.Data.SQLite.xml
 C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.csproj.CopyComplete
+C:\Projekty\c#_projekty\TodoApp\TodoApp\obj\Debug\TodoApp.EditForm.resources

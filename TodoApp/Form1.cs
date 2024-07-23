@@ -19,18 +19,17 @@ namespace TodoApp
 
             DataTable dtTasks = DatabaseManager.GetAllTasks();
             dataGridViewData.DataSource = dtTasks;
-            comboBox_priority.DataSource = Enum.GetValues(typeof(Priority));
+            comboBoxPriority.DataSource = Enum.GetValues(typeof(Priority));
             RefreshDataGridView();
-
         }
 
         private void button_addTask_Click(object sender, EventArgs e)
         {
-            string name = textBox_name.Text;
-            string description = textBox_description.Text;
+            string name = textBoxName.Text;
+            string description = textBoxDescription.Text;
             Priority priority;
 
-            if (Enum.TryParse(comboBox_priority.SelectedItem.ToString(), out priority))
+            if (Enum.TryParse(comboBoxPriority.SelectedItem.ToString(), out priority))
             {
                 DateTime deadline = DateTime.Now;
 
@@ -52,18 +51,17 @@ namespace TodoApp
             }
         }
 
-        private void RefreshTaskList()
+      private void RefreshTaskList()
         {
             DataTable dtTasks = DatabaseManager.GetAllTasks();
 
             dataGridViewData.DataSource = dtTasks;
         }
 
-
         private void ClearAddTaskFields()
         {
-            textBox_name.Text = "";
-            textBox_description.Text = "";
+            textBoxName.Text = "";
+            textBoxDescription.Text = "";
         }
 
         private void RefreshDataGridView()
@@ -102,5 +100,28 @@ namespace TodoApp
             RefreshDataGridView();
         }
 
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            int dataRowIndex = dataGridViewData.CurrentRow.Index;
+            if (dataRowIndex >= 0)
+            {
+                string name = dataGridViewData.CurrentRow.Cells[0].Value.ToString(); 
+                string description = dataGridViewData.CurrentRow.Cells[1].Value.ToString();
+                string priority = dataGridViewData.CurrentRow.Cells[2].Value.ToString();
+                string deadline = dataGridViewData.CurrentRow.Cells[3].Value.ToString();
+
+                EditForm editForm = new EditForm();
+                editForm.NameText = name;
+                editForm.DescriptionText = description;
+                editForm.PriorityText = priority;
+                editForm.DeadlineText = deadline;
+                editForm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Wybierz wiersz do edycji.");
+            }
+        }
     }
 }

@@ -39,20 +39,21 @@
             this.tabPageCompleted = new System.Windows.Forms.TabPage();
             this.tabPageUncompleted = new System.Windows.Forms.TabPage();
             this.dataGridViewData = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button_edit = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button_addTask = new System.Windows.Forms.Button();
-            this.comboBox_priority = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerDeadline = new System.Windows.Forms.DateTimePicker();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonAddTask = new System.Windows.Forms.Button();
+            this.comboBoxPriority = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox_description = new System.Windows.Forms.TextBox();
-            this.textBox_name = new System.Windows.Forms.TextBox();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl.SuspendLayout();
             this.tabPageLow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEasyTasks)).BeginInit();
@@ -62,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHardTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -203,55 +205,56 @@
             this.dataGridViewData.Size = new System.Drawing.Size(824, 262);
             this.dataGridViewData.TabIndex = 1;
             // 
-            // button1
+            // buttonExit
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(288, 87);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(230, 102);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonExit.BackColor = System.Drawing.Color.Transparent;
+            this.buttonExit.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonExit.Location = new System.Drawing.Point(270, 82);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(230, 102);
+            this.buttonExit.TabIndex = 3;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // buttonDelete
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(15, 87);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(230, 102);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.buttonDelete.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDelete.Location = new System.Drawing.Point(6, 82);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(230, 102);
+            this.buttonDelete.TabIndex = 2;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = false;
             // 
-            // button_edit
+            // buttonEdit
             // 
-            this.button_edit.BackColor = System.Drawing.Color.LightYellow;
-            this.button_edit.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_edit.Location = new System.Drawing.Point(15, 12);
-            this.button_edit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button_edit.Name = "button_edit";
-            this.button_edit.Size = new System.Drawing.Size(503, 76);
-            this.button_edit.TabIndex = 1;
-            this.button_edit.Text = "Edit";
-            this.button_edit.UseVisualStyleBackColor = false;
+            this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(170)))));
+            this.buttonEdit.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEdit.Location = new System.Drawing.Point(6, 3);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(494, 76);
+            this.buttonEdit.TabIndex = 1;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button_addTask);
-            this.groupBox1.Controls.Add(this.comboBox_priority);
+            this.groupBox1.Controls.Add(this.dateTimePickerDeadline);
+            this.groupBox1.Controls.Add(this.buttonCancel);
+            this.groupBox1.Controls.Add(this.buttonAddTask);
+            this.groupBox1.Controls.Add(this.comboBoxPriority);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox_description);
-            this.groupBox1.Controls.Add(this.textBox_name);
+            this.groupBox1.Controls.Add(this.textBoxDescription);
+            this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(524, 12);
             this.groupBox1.Name = "groupBox1";
@@ -260,42 +263,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add new task";
             // 
-            // dateTimePicker1
+            // dateTimePickerDeadline
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(83, 120);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 26);
-            this.dateTimePicker1.TabIndex = 31;
+            this.dateTimePickerDeadline.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDeadline.Location = new System.Drawing.Point(83, 120);
+            this.dateTimePickerDeadline.Name = "dateTimePickerDeadline";
+            this.dateTimePickerDeadline.Size = new System.Drawing.Size(100, 26);
+            this.dateTimePickerDeadline.TabIndex = 31;
             // 
-            // button4
+            // buttonCancel
             // 
-            this.button4.Location = new System.Drawing.Point(202, 126);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 26);
-            this.button4.TabIndex = 30;
-            this.button4.Text = "Cancel";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonCancel.Location = new System.Drawing.Point(202, 126);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(103, 26);
+            this.buttonCancel.TabIndex = 30;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // button_addTask
+            // buttonAddTask
             // 
-            this.button_addTask.Location = new System.Drawing.Point(202, 26);
-            this.button_addTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button_addTask.Name = "button_addTask";
-            this.button_addTask.Size = new System.Drawing.Size(103, 92);
-            this.button_addTask.TabIndex = 29;
-            this.button_addTask.Text = "Add";
-            this.button_addTask.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Location = new System.Drawing.Point(202, 26);
+            this.buttonAddTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonAddTask.Name = "buttonAddTask";
+            this.buttonAddTask.Size = new System.Drawing.Size(103, 92);
+            this.buttonAddTask.TabIndex = 29;
+            this.buttonAddTask.Text = "Add";
+            this.buttonAddTask.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Click += new System.EventHandler(this.button_addTask_Click);
             // 
-            // comboBox_priority
+            // comboBoxPriority
             // 
-            this.comboBox_priority.FormattingEnabled = true;
-            this.comboBox_priority.Location = new System.Drawing.Point(83, 90);
-            this.comboBox_priority.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox_priority.Name = "comboBox_priority";
-            this.comboBox_priority.Size = new System.Drawing.Size(100, 26);
-            this.comboBox_priority.TabIndex = 28;
+            this.comboBoxPriority.FormattingEnabled = true;
+            this.comboBoxPriority.Location = new System.Drawing.Point(83, 90);
+            this.comboBoxPriority.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxPriority.Name = "comboBoxPriority";
+            this.comboBoxPriority.Size = new System.Drawing.Size(100, 26);
+            this.comboBoxPriority.TabIndex = 28;
             // 
             // label4
             // 
@@ -333,21 +337,34 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Name";
             // 
-            // textBox_description
+            // textBoxDescription
             // 
-            this.textBox_description.Location = new System.Drawing.Point(83, 58);
-            this.textBox_description.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox_description.Name = "textBox_description";
-            this.textBox_description.Size = new System.Drawing.Size(100, 26);
-            this.textBox_description.TabIndex = 23;
+            this.textBoxDescription.Location = new System.Drawing.Point(83, 58);
+            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(100, 26);
+            this.textBoxDescription.TabIndex = 23;
             // 
-            // textBox_name
+            // textBoxName
             // 
-            this.textBox_name.Location = new System.Drawing.Point(83, 26);
-            this.textBox_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 26);
-            this.textBox_name.TabIndex = 22;
+            this.textBoxName.Location = new System.Drawing.Point(83, 26);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 26);
+            this.textBoxName.TabIndex = 22;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.groupBox2.Controls.Add(this.buttonEdit);
+            this.groupBox2.Controls.Add(this.buttonDelete);
+            this.groupBox2.Controls.Add(this.buttonExit);
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(506, 189);
+            this.groupBox2.TabIndex = 32;
+            this.groupBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -355,12 +372,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(851, 506);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewData);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.button_edit);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
@@ -375,6 +390,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -382,9 +398,9 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.TabPage tabPageMedium;
         private System.Windows.Forms.TabPage tabPageHigh;
         private System.Windows.Forms.TabPage tabPageAllData;
@@ -396,16 +412,17 @@
         private System.Windows.Forms.TabPage tabPageCompleted;
         private System.Windows.Forms.TabPage tabPageUncompleted;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button_addTask;
-        private System.Windows.Forms.ComboBox comboBox_priority;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonAddTask;
+        private System.Windows.Forms.ComboBox comboBoxPriority;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_description;
-        private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDeadline;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
