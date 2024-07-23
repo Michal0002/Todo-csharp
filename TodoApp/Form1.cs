@@ -33,30 +33,37 @@ namespace TodoApp
 
         private void buttonEditTask_Click(object sender, EventArgs e)
         {
+
             if (selectedTaskId != -1)
             {
-                try
-                {
-                    string name = textBoxName.Text.Trim();
-                    string description = textBoxDescription.Text.Trim();
+                // Show confirmation dialog
+                DialogResult result = MessageBox.Show($"Are you sure you want to edit this task (ID: {selectedTaskId})?", "Confirm Edit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (comboBoxPriority.SelectedItem == null)
+                if (result == DialogResult.Yes)
+                {
+                    try
                     {
-                        MessageBox.Show("Please select a priority.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        string name = textBoxName.Text.Trim();
+                        string description = textBoxDescription.Text.Trim();
+
+                        if (comboBoxPriority.SelectedItem == null)
+                        {
+                            MessageBox.Show("Please select a priority.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        string priorityText = comboBoxPriority.SelectedItem.ToString();
+                        DateTime deadline = dateTimePickerDeadline.Value;
+
+                        DatabaseManager.UpdateTask(selectedTaskId, name, description, priorityText, deadline);
+
+                        RefreshDataGridView();
+                        MessageBox.Show("Task updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
-                    string priorityText = comboBoxPriority.SelectedItem.ToString();
-                    DateTime deadline = dateTimePickerDeadline.Value;
-
-                    DatabaseManager.UpdateTask(selectedTaskId, name, description, priorityText, deadline);
-
-                    RefreshDataGridView();
-                    MessageBox.Show("Task updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while updating the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while updating the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -110,5 +117,47 @@ namespace TodoApp
             }
         }
 
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedTaskId != -1)
+            {
+                // Show confirmation dialog
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this task?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DatabaseManager.DeleteTask(selectedTaskId);
+
+                        RefreshDataGridView();
+                        MessageBox.Show("Task deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearAddTaskFields();
+                        RefreshDataGridView();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while deleting the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a task to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearAddTaskFields()
+        {
+            textBoxName.Text = "";
+            textBoxDescription.Text = "";
+            comboBoxPriority.Text = "";
+            dateTimePickerDeadline.Text = "";
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            RefreshDataGridView();
+        }
     }
 }

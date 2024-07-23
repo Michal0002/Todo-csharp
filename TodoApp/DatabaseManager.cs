@@ -61,7 +61,7 @@ namespace TodoApp
 
                 string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
-                               "WHERE priority = 0";
+                               "WHERE priority = 'Low'";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 
@@ -80,7 +80,7 @@ namespace TodoApp
 
                 string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
-                               "WHERE priority = 1";
+                               "WHERE priority = 'Medium'";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 
@@ -99,7 +99,7 @@ namespace TodoApp
 
                 string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
-                               "WHERE priority = 2";
+                               "WHERE priority = 'High'";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 
@@ -187,5 +187,22 @@ namespace TodoApp
                 connection.Close();
             }
         }
+
+        public static void DeleteTask(int id)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Tasks WHERE id = @id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+
     }
 }
