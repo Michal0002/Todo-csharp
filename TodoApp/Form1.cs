@@ -12,6 +12,7 @@ namespace TodoApp
 {
     public partial class Form1 : Form
     {
+        private int selectedTaskId = -1;
         public Form1()
         {
             InitializeComponent();
@@ -94,34 +95,46 @@ namespace TodoApp
             dataGridViewData.Refresh();
         }
 
-
-        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        private void dataGridViewData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RefreshDataGridView();
+            if (dataGridViewData.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewData.SelectedRows[0];
+                selectedTaskId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+                labelTaskID.Text = selectedTaskId.ToString();
+                //data fill 
+                textBoxName.Text = selectedRow.Cells["name"].Value.ToString();
+                textBoxDescription.Text = selectedRow.Cells["description"].Value.ToString();
+                comboBoxPriority.SelectedItem = selectedRow.Cells["priority"].Value.ToString();
+                dateTimePickerDeadline.Value = Convert.ToDateTime(selectedRow.Cells["deadline"].Value);
+            }
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void buttonEditTask_Click(object sender, EventArgs e)
         {
-            int dataRowIndex = dataGridViewData.CurrentRow.Index;
-            if (dataRowIndex >= 0)
+            if (selectedTaskId != -1)
             {
-                string name = dataGridViewData.CurrentRow.Cells[0].Value.ToString(); 
-                string description = dataGridViewData.CurrentRow.Cells[1].Value.ToString();
-                string priority = dataGridViewData.CurrentRow.Cells[2].Value.ToString();
-                string deadline = dataGridViewData.CurrentRow.Cells[3].Value.ToString();
+                int selectedTaskId = Convert.ToInt32(dataGridViewData.CurrentRow.Cells[0].Value);
+                string name = textBoxName.Text;
+                string description = textBoxDescription.Text;
+                Priority priority = (Priority)Enum.Parse(typeof(Priority), comboBoxPriority.SelectedItem.ToString());
+                DateTime deadline = dateTimePickerDeadline.Value;
 
-                EditForm editForm = new EditForm();
-                editForm.NameText = name;
-                editForm.DescriptionText = description;
-                editForm.PriorityText = priority;
-                editForm.DeadlineText = deadline;
-                editForm.ShowDialog();
+                DatabaseManager.UpdateTask(selectedTaskId, name, description, priority, deadline);
 
+                RefreshDataGridView();
             }
             else
             {
-                MessageBox.Show("Wybierz wiersz do edycji.");
+                MessageBox.Show("Please select a task to edit.");
             }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddTask addTaskForm = new AddTask();
+
+            addTaskForm.ShowDialog();
         }
     }
 }

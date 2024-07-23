@@ -41,7 +41,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed FROM Tasks";
+                string query = "SELECT id, name, description, priority, deadline, completed FROM Tasks";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dtTasks);
 
@@ -58,7 +58,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed " +
+                string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 0";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -77,7 +77,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed " +
+                string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 1";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -96,7 +96,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed " +
+                string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE priority = 2";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -115,7 +115,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed " +
+                string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE completed = 1";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -134,7 +134,7 @@ namespace TodoApp
             {
                 connection.Open();
 
-                string query = "SELECT name, description, priority, deadline, completed " +
+                string query = "SELECT id, name, description, priority, deadline, completed " +
                                "FROM Tasks " +
                                "WHERE completed = 0";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
@@ -166,24 +166,20 @@ namespace TodoApp
             }
         }
 
-        public static void UpdateTask(int taskId, string name, string description, Priority priority, DateTime deadline)
+        public static void UpdateTask(int id, string name, string description, Priority priority, DateTime deadline)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "UPDATE Tasks " +
-                               "SET name = @name, " +
-                               "description = @description, " +
-                               "priority = @priority, " +
-                               "deadline = @deadline " +
-                               "WHERE task_id = @taskId";
+                string query = "UPDATE Tasks SET name = @name, description = @description, priority = @priority, deadline = @deadline " +
+                               "WHERE id = @id";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@description", description);
                 command.Parameters.AddWithValue("@priority", (int)priority);
                 command.Parameters.AddWithValue("@deadline", deadline);
-                command.Parameters.AddWithValue("@taskId", taskId);
 
                 command.ExecuteNonQuery();
 

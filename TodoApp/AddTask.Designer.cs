@@ -1,6 +1,6 @@
 ﻿namespace TodoApp
 {
-    partial class EditForm
+    partial class AddTask
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTaskID = new System.Windows.Forms.Label();
             this.dateTimePickerDeadline = new System.Windows.Forms.DateTimePicker();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAddTask = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.groupBox1.Controls.Add(this.labelTaskID);
             this.groupBox1.Controls.Add(this.dateTimePickerDeadline);
             this.groupBox1.Controls.Add(this.buttonCancel);
             this.groupBox1.Controls.Add(this.buttonAddTask);
@@ -61,49 +63,59 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 426);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Edit task";
+            this.groupBox1.Text = "task #";
+            // 
+            // labelTaskID
+            // 
+            this.labelTaskID.AutoSize = true;
+            this.labelTaskID.Location = new System.Drawing.Point(55, 0);
+            this.labelTaskID.Name = "labelTaskID";
+            this.labelTaskID.Size = new System.Drawing.Size(0, 18);
+            this.labelTaskID.TabIndex = 32;
             // 
             // dateTimePickerDeadline
             // 
             this.dateTimePickerDeadline.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDeadline.Location = new System.Drawing.Point(83, 120);
+            this.dateTimePickerDeadline.Location = new System.Drawing.Point(263, 166);
             this.dateTimePickerDeadline.Name = "dateTimePickerDeadline";
-            this.dateTimePickerDeadline.Size = new System.Drawing.Size(100, 26);
+            this.dateTimePickerDeadline.Size = new System.Drawing.Size(299, 26);
             this.dateTimePickerDeadline.TabIndex = 31;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(202, 126);
+            this.buttonCancel.Location = new System.Drawing.Point(6, 393);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(103, 26);
+            this.buttonCancel.Size = new System.Drawing.Size(764, 26);
             this.buttonCancel.TabIndex = 30;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonAddTask
             // 
-            this.buttonAddTask.Location = new System.Drawing.Point(202, 26);
+            this.buttonAddTask.Location = new System.Drawing.Point(6, 293);
             this.buttonAddTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAddTask.Name = "buttonAddTask";
-            this.buttonAddTask.Size = new System.Drawing.Size(103, 92);
+            this.buttonAddTask.Size = new System.Drawing.Size(764, 92);
             this.buttonAddTask.TabIndex = 29;
             this.buttonAddTask.Text = "Add";
             this.buttonAddTask.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
             // 
             // comboBoxPriority
             // 
             this.comboBoxPriority.FormattingEnabled = true;
-            this.comboBoxPriority.Location = new System.Drawing.Point(83, 90);
+            this.comboBoxPriority.Location = new System.Drawing.Point(263, 123);
             this.comboBoxPriority.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxPriority.Name = "comboBoxPriority";
-            this.comboBoxPriority.Size = new System.Drawing.Size(100, 26);
+            this.comboBoxPriority.Size = new System.Drawing.Size(299, 26);
             this.comboBoxPriority.TabIndex = 28;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 126);
+            this.label4.Location = new System.Drawing.Point(199, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 27;
@@ -112,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 93);
+            this.label3.Location = new System.Drawing.Point(199, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 18);
             this.label3.TabIndex = 26;
@@ -121,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 61);
+            this.label2.Location = new System.Drawing.Point(199, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 18);
             this.label2.TabIndex = 25;
@@ -130,7 +142,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 29);
+            this.label1.Location = new System.Drawing.Point(199, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 24;
@@ -138,27 +150,27 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(83, 58);
+            this.textBoxDescription.Location = new System.Drawing.Point(263, 73);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(100, 26);
+            this.textBoxDescription.Size = new System.Drawing.Size(299, 26);
             this.textBoxDescription.TabIndex = 23;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(83, 26);
+            this.textBoxName.Location = new System.Drawing.Point(263, 34);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(100, 26);
+            this.textBoxName.Size = new System.Drawing.Size(299, 26);
             this.textBoxName.TabIndex = 22;
             // 
-            // EditForm
+            // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
-            this.Name = "EditForm";
+            this.Name = "AddTask";
             this.Text = "EditForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label labelTaskID;
     }
 }
