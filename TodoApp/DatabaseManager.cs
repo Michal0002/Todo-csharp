@@ -18,12 +18,12 @@ namespace TodoApp
                 connection.Open();
 
                 string query = @"CREATE TABLE IF NOT EXISTS Tasks (
-                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    name TEXT NOT NULL,
-                                    description TEXT,
-                                    priority INTEGER,
-                                    deadline DATE,
-                                    completed INTEGER DEFAULT 0
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                name TEXT NOT NULL UNIQUE,
+                                description TEXT,
+                                priority TEXT CHECK(priority IN ('Low', 'Medium', 'High')),
+                                deadline DATE,
+                                completed INTEGER DEFAULT 0 CHECK(completed IN (0, 1))
                                 )";
 
                 SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -47,6 +47,7 @@ namespace TodoApp
 
                 connection.Close();
             }
+
 
             return dtTasks;
         }
@@ -146,7 +147,7 @@ namespace TodoApp
             return dtTasks;
         }
 
-        public static void InsertTask(string name, string description, Priority priority, DateTime deadline)
+        public static void InsertTask(string name, string description, string priority, DateTime deadline)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -157,7 +158,7 @@ namespace TodoApp
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@description", description);
-                command.Parameters.AddWithValue("@priority", (int)priority);
+                command.Parameters.AddWithValue("@priority", priority);
                 command.Parameters.AddWithValue("@deadline", deadline);
 
                 command.ExecuteNonQuery();
@@ -166,7 +167,7 @@ namespace TodoApp
             }
         }
 
-        public static void UpdateTask(int id, string name, string description, Priority priority, DateTime deadline)
+        public static void UpdateTask(int id, string name, string description, string priority, DateTime deadline)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -178,7 +179,7 @@ namespace TodoApp
                 command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@description", description);
-                command.Parameters.AddWithValue("@priority", (int)priority);
+                command.Parameters.AddWithValue("@priority", priority);
                 command.Parameters.AddWithValue("@deadline", deadline);
 
                 command.ExecuteNonQuery();

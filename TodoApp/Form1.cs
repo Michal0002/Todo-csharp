@@ -24,45 +24,45 @@ namespace TodoApp
             RefreshDataGridView();
         }
 
-        private void button_addTask_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string name = textBoxName.Text;
-            string description = textBoxDescription.Text;
-            Priority priority;
+            AddTask addTaskForm = new AddTask();
 
-            if (Enum.TryParse(comboBoxPriority.SelectedItem.ToString(), out priority))
+            addTaskForm.ShowDialog();
+        }
+
+        private void buttonEditTask_Click(object sender, EventArgs e)
+        {
+            if (selectedTaskId != -1)
             {
-                DateTime deadline = DateTime.Now;
-
                 try
                 {
-                    DatabaseManager.InsertTask(name, description, priority, deadline);
-                    MessageBox.Show("Zadanie dodane pomyślnie.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearAddTaskFields();
-                    RefreshTaskList(); 
+                    string name = textBoxName.Text.Trim();
+                    string description = textBoxDescription.Text.Trim();
+
+                    if (comboBoxPriority.SelectedItem == null)
+                    {
+                        MessageBox.Show("Please select a priority.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string priorityText = comboBoxPriority.SelectedItem.ToString();
+                    DateTime deadline = dateTimePickerDeadline.Value;
+
+                    DatabaseManager.UpdateTask(selectedTaskId, name, description, priorityText, deadline);
+
+                    RefreshDataGridView();
+                    MessageBox.Show("Task updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Wystąpił błąd podczas dodawania zadania: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"An error occurred while updating the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Nie wybrano prawidłowego priorytetu zadania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a task to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-      private void RefreshTaskList()
-        {
-            DataTable dtTasks = DatabaseManager.GetAllTasks();
-
-            dataGridViewData.DataSource = dtTasks;
-        }
-
-        private void ClearAddTaskFields()
-        {
-            textBoxName.Text = "";
-            textBoxDescription.Text = "";
         }
 
         private void RefreshDataGridView()
@@ -105,36 +105,10 @@ namespace TodoApp
                 //data fill 
                 textBoxName.Text = selectedRow.Cells["name"].Value.ToString();
                 textBoxDescription.Text = selectedRow.Cells["description"].Value.ToString();
-                comboBoxPriority.SelectedItem = selectedRow.Cells["priority"].Value.ToString();
+                comboBoxPriority.Text = selectedRow.Cells["priority"].Value.ToString();
                 dateTimePickerDeadline.Value = Convert.ToDateTime(selectedRow.Cells["deadline"].Value);
             }
         }
 
-        private void buttonEditTask_Click(object sender, EventArgs e)
-        {
-            if (selectedTaskId != -1)
-            {
-                int selectedTaskId = Convert.ToInt32(dataGridViewData.CurrentRow.Cells[0].Value);
-                string name = textBoxName.Text;
-                string description = textBoxDescription.Text;
-                Priority priority = (Priority)Enum.Parse(typeof(Priority), comboBoxPriority.SelectedItem.ToString());
-                DateTime deadline = dateTimePickerDeadline.Value;
-
-                DatabaseManager.UpdateTask(selectedTaskId, name, description, priority, deadline);
-
-                RefreshDataGridView();
-            }
-            else
-            {
-                MessageBox.Show("Please select a task to edit.");
-            }
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            AddTask addTaskForm = new AddTask();
-
-            addTaskForm.ShowDialog();
-        }
     }
 }

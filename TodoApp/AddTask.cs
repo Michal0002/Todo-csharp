@@ -16,7 +16,6 @@ namespace TodoApp
         {
             InitializeComponent();
             comboBoxPriority.DataSource = Enum.GetValues(typeof(Priority));
-
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -33,27 +32,19 @@ namespace TodoApp
         {
             string name = textBoxName.Text;
             string description = textBoxDescription.Text;
-
             if (comboBoxPriority.SelectedItem != null)
             {
                 string priorityText = comboBoxPriority.SelectedItem.ToString();
-                if (Enum.TryParse(priorityText, out Priority priority))
-                {
-                    DateTime deadline = dateTimePickerDeadline.Value;
+                DateTime deadline = dateTimePickerDeadline.Value;
 
-                    try
-                    {
-                        DatabaseManager.InsertTask(name, description, priority, deadline);
-                        MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
+                try
                 {
-                    MessageBox.Show("Invalid priority selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DatabaseManager.InsertTask(name, description, priorityText, deadline);
+                    MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
