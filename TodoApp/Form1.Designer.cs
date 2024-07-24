@@ -43,6 +43,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonComplete = new System.Windows.Forms.Button();
+            this.buttonUncomplete = new System.Windows.Forms.Button();
             this.labelTaskID = new System.Windows.Forms.Label();
             this.dateTimePickerDeadline = new System.Windows.Forms.DateTimePicker();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -248,6 +250,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.groupBox1.Controls.Add(this.buttonComplete);
+            this.groupBox1.Controls.Add(this.buttonUncomplete);
             this.groupBox1.Controls.Add(this.labelTaskID);
             this.groupBox1.Controls.Add(this.dateTimePickerDeadline);
             this.groupBox1.Controls.Add(this.buttonCancel);
@@ -266,6 +270,28 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Task #";
+            // 
+            // buttonComplete
+            // 
+            this.buttonComplete.Location = new System.Drawing.Point(150, 156);
+            this.buttonComplete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonComplete.Name = "buttonComplete";
+            this.buttonComplete.Size = new System.Drawing.Size(103, 26);
+            this.buttonComplete.TabIndex = 34;
+            this.buttonComplete.Text = "Complete";
+            this.buttonComplete.UseVisualStyleBackColor = true;
+            this.buttonComplete.Click += new System.EventHandler(this.buttonComplete_Click);
+            // 
+            // buttonUncomplete
+            // 
+            this.buttonUncomplete.Location = new System.Drawing.Point(41, 156);
+            this.buttonUncomplete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonUncomplete.Name = "buttonUncomplete";
+            this.buttonUncomplete.Size = new System.Drawing.Size(103, 26);
+            this.buttonUncomplete.TabIndex = 33;
+            this.buttonUncomplete.Text = "Uncomplete";
+            this.buttonUncomplete.UseVisualStyleBackColor = true;
+            this.buttonUncomplete.Click += new System.EventHandler(this.buttonUncomplete_Click);
             // 
             // labelTaskID
             // 
@@ -436,6 +462,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerDeadline;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelTaskID;
+        private System.Windows.Forms.Button buttonUncomplete;
+        private System.Windows.Forms.Button buttonComplete;
     }
 }
 

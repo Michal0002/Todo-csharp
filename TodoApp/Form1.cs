@@ -159,5 +159,59 @@ namespace TodoApp
         {
             RefreshDataGridView();
         }
+
+        private void buttonComplete_Click(object sender, EventArgs e)
+        {
+            if (selectedTaskId != -1)
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you want to mark this task (ID: {selectedTaskId}) as completed?", "Confirm Completion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DatabaseManager.MarkTaskAsCompleted(selectedTaskId);
+
+                        RefreshDataGridView();
+                        MessageBox.Show("Task marked as completed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while marking the task as completed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a task to complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUncomplete_Click(object sender, EventArgs e)
+        {
+            if (selectedTaskId != -1)
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you want to mark this task (ID: {selectedTaskId}) as uncompleted?", "Confirm Completion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DatabaseManager.MarkTaskAsUncompleted(selectedTaskId);
+
+                        RefreshDataGridView();
+                        MessageBox.Show("Task marked as uncompleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while marking the task as uncompleted: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a task to complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -204,5 +204,36 @@ namespace TodoApp
             }
         }
 
+        public static void MarkTaskAsCompleted(int id)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE Tasks SET completed = 1 WHERE id = @id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+        public static void MarkTaskAsUncompleted(int id)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE Tasks SET completed = 0 WHERE id = @id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+
     }
 }
