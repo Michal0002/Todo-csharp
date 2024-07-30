@@ -213,5 +213,14 @@ namespace TodoApp
                 MessageBox.Show("Please select a task to complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            textBoxName.Text = "";
+            textBoxDescription.Text = "";
+            comboBoxPriority.SelectedIndex = 0;
+            dateTimePickerDeadline.Text = DateTime.Now.ToString();
+            selectedTaskId = -1;
+        }
     }
 }

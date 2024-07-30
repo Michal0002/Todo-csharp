@@ -32,25 +32,52 @@ namespace TodoApp
         {
             string name = textBoxName.Text;
             string description = textBoxDescription.Text;
+
+            if (name.Length < 8)
+            {
+                MessageBox.Show("Task title must be at least 8 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (description.Length < 16)
+            {
+                MessageBox.Show("Task description must be at least 16 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (comboBoxPriority.SelectedItem != null)
             {
                 string priorityText = comboBoxPriority.SelectedItem.ToString();
                 DateTime deadline = dateTimePickerDeadline.Value;
 
-                try
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description))
                 {
-                    DatabaseManager.InsertTask(name, description, priorityText, deadline);
-                    MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        DatabaseManager.InsertTask(name, description, priorityText, deadline);
+                        MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Fields cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show("Please select a priority.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ButtonClearFields_Click(object sender, EventArgs e)
+        {
+            textBoxName.Text = "";
+            textBoxDescription.Text = "";
+            comboBoxPriority.SelectedIndex = 0;
+            dateTimePickerDeadline.Text = DateTime.Now.ToString();
+            MessageBox.Show("Field's are empty now.", "Clear fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

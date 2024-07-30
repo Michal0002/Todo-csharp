@@ -77,7 +77,8 @@
             this.tabControl.Controls.Add(this.tabPageHigh);
             this.tabControl.Controls.Add(this.tabPageCompleted);
             this.tabControl.Controls.Add(this.tabPageUncompleted);
-            this.tabControl.Location = new System.Drawing.Point(11, 197);
+            this.tabControl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tabControl.Location = new System.Drawing.Point(11, 203);
             this.tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -87,6 +88,7 @@
             // 
             // tabPageAllData
             // 
+            this.tabPageAllData.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageAllData.Location = new System.Drawing.Point(4, 27);
             this.tabPageAllData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageAllData.Name = "tabPageAllData";
@@ -99,6 +101,7 @@
             // tabPageLow
             // 
             this.tabPageLow.Controls.Add(this.dataGridViewEasyTasks);
+            this.tabPageLow.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageLow.Location = new System.Drawing.Point(4, 27);
             this.tabPageLow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageLow.Name = "tabPageLow";
@@ -123,6 +126,7 @@
             // tabPageMedium
             // 
             this.tabPageMedium.Controls.Add(this.dataGridViewMediumTasks);
+            this.tabPageMedium.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageMedium.Location = new System.Drawing.Point(4, 27);
             this.tabPageMedium.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageMedium.Name = "tabPageMedium";
@@ -146,6 +150,7 @@
             // tabPageHigh
             // 
             this.tabPageHigh.Controls.Add(this.dataGridViewHardTasks);
+            this.tabPageHigh.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageHigh.Location = new System.Drawing.Point(4, 27);
             this.tabPageHigh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageHigh.Name = "tabPageHigh";
@@ -168,6 +173,7 @@
             // 
             // tabPageCompleted
             // 
+            this.tabPageCompleted.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageCompleted.Location = new System.Drawing.Point(4, 27);
             this.tabPageCompleted.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageCompleted.Name = "tabPageCompleted";
@@ -178,6 +184,7 @@
             // 
             // tabPageUncompleted
             // 
+            this.tabPageUncompleted.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPageUncompleted.Location = new System.Drawing.Point(4, 27);
             this.tabPageUncompleted.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageUncompleted.Name = "tabPageUncompleted";
@@ -198,7 +205,7 @@
             this.dataGridViewData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridViewData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewData.Location = new System.Drawing.Point(12, 220);
+            this.dataGridViewData.Location = new System.Drawing.Point(12, 226);
             this.dataGridViewData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewData.MultiSelect = false;
             this.dataGridViewData.Name = "dataGridViewData";
@@ -212,38 +219,38 @@
             // buttonExit
             // 
             this.buttonExit.BackColor = System.Drawing.Color.Transparent;
-            this.buttonExit.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonExit.Font = new System.Drawing.Font("Consolas", 34F);
             this.buttonExit.Location = new System.Drawing.Point(270, 82);
             this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(230, 102);
             this.buttonExit.TabIndex = 3;
-            this.buttonExit.Text = "Exit";
+            this.buttonExit.Text = "EXIT";
             this.buttonExit.UseVisualStyleBackColor = false;
             // 
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.buttonDelete.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDelete.Font = new System.Drawing.Font("Consolas", 34F);
             this.buttonDelete.Location = new System.Drawing.Point(6, 82);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(230, 102);
             this.buttonDelete.TabIndex = 2;
-            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.Text = "DELETE";
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(170)))));
-            this.buttonAdd.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAdd.Font = new System.Drawing.Font("Consolas", 34F);
             this.buttonAdd.Location = new System.Drawing.Point(6, 3);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(494, 76);
             this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "New task";
+            this.buttonAdd.Text = "NEW";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -273,24 +280,28 @@
             // 
             // buttonComplete
             // 
+            this.buttonComplete.BackColor = System.Drawing.Color.PaleGreen;
+            this.buttonComplete.Font = new System.Drawing.Font("Consolas", 7F);
             this.buttonComplete.Location = new System.Drawing.Point(150, 156);
             this.buttonComplete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonComplete.Name = "buttonComplete";
             this.buttonComplete.Size = new System.Drawing.Size(103, 26);
             this.buttonComplete.TabIndex = 34;
-            this.buttonComplete.Text = "Complete";
-            this.buttonComplete.UseVisualStyleBackColor = true;
+            this.buttonComplete.Text = "COMPLETED";
+            this.buttonComplete.UseVisualStyleBackColor = false;
             this.buttonComplete.Click += new System.EventHandler(this.buttonComplete_Click);
             // 
             // buttonUncomplete
             // 
+            this.buttonUncomplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.buttonUncomplete.Font = new System.Drawing.Font("Consolas", 7F);
             this.buttonUncomplete.Location = new System.Drawing.Point(41, 156);
             this.buttonUncomplete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonUncomplete.Name = "buttonUncomplete";
             this.buttonUncomplete.Size = new System.Drawing.Size(103, 26);
             this.buttonUncomplete.TabIndex = 33;
-            this.buttonUncomplete.Text = "Uncomplete";
-            this.buttonUncomplete.UseVisualStyleBackColor = true;
+            this.buttonUncomplete.Text = "UNCOMPLETED";
+            this.buttonUncomplete.UseVisualStyleBackColor = false;
             this.buttonUncomplete.Click += new System.EventHandler(this.buttonUncomplete_Click);
             // 
             // labelTaskID
@@ -311,6 +322,7 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonCancel.Location = new System.Drawing.Point(202, 120);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonCancel.Name = "buttonCancel";
@@ -318,15 +330,17 @@
             this.buttonCancel.TabIndex = 30;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonEditTask
             // 
+            this.buttonEditTask.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonEditTask.Location = new System.Drawing.Point(202, 26);
             this.buttonEditTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonEditTask.Name = "buttonEditTask";
             this.buttonEditTask.Size = new System.Drawing.Size(103, 92);
             this.buttonEditTask.TabIndex = 29;
-            this.buttonEditTask.Text = "Edit";
+            this.buttonEditTask.Text = "EDIT";
             this.buttonEditTask.UseVisualStyleBackColor = true;
             this.buttonEditTask.Click += new System.EventHandler(this.buttonEditTask_Click);
             // 
