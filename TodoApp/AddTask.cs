@@ -32,43 +32,44 @@ namespace TodoApp
         {
             string name = textBoxName.Text;
             string description = textBoxDescription.Text;
+            string priorityText = comboBoxPriority.SelectedItem?.ToString();
+            DateTime deadline = dateTimePickerDeadline.Value;
 
+            if (!ValidateInputs(name, description, priorityText))
+            {
+                return;
+            }
+
+            try
+            {
+                DatabaseManager.InsertTask(name, description, priorityText, deadline);
+                MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool ValidateInputs(string name, string description, string priorityText)
+        {
             if (name.Length < 8)
             {
                 MessageBox.Show("Task title must be at least 8 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
             if (description.Length < 16)
             {
                 MessageBox.Show("Task description must be at least 16 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
-            if (comboBoxPriority.SelectedItem != null)
+            if (string.IsNullOrEmpty(priorityText))
             {
-                string priorityText = comboBoxPriority.SelectedItem.ToString();
-                DateTime deadline = dateTimePickerDeadline.Value;
+                MessageBox.Show("Please select a priority.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
-                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description))
-                {
-                    try
-                    {
-                        DatabaseManager.InsertTask(name, description, priorityText, deadline);
-                        MessageBox.Show("Task added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An error occurred while adding the task: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Fields cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a priority.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return true;
         }
 
         private void ButtonClearFields_Click(object sender, EventArgs e)
